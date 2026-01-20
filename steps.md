@@ -8,3 +8,7 @@
     - git clone https://aur.archlinux.org/yay.git
     - cd yay
     - makepkg -si
+7. Run those command once after install:
+    - yay -Y --gendb
+    - yay -Syu --devel
+    - yay -Y --devel --save
