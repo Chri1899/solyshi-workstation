@@ -15,3 +15,9 @@
 8. Install meson and ninja
 9. Install pkg-config
 10. Install wayland
+11. yay -S wayland-protocols
+12. yay -S xorg-xwayland
+13.  yay -S hyprland
+14. yay -S kitty
+15. yay -S openssh
+16. ssh-keygen
