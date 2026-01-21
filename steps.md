@@ -32,3 +32,6 @@
 25. Integrate dotfiles with a stow workflow. Use:
     cd ~
     stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow) 
+26. yay -S gst-plugins-{base,good,bad,ugly} gst-libav (for qutebrowser video playback)
+27. yay -S xdg-desktop-portal (??)
+
