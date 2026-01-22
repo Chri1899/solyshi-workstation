@@ -40,6 +40,10 @@
 31. Installed mesa, vulkan-radeo, libva-mesa-driver, vulkan-icd-loader
 32. Installed mesa-utils and vulkan-tools
 33. Install nerd font jetbrains mono
+
 34. Installed neovim
 35. Installed wget, curl, zip, unzip and tar
 36. Installed fzf
+37. Installed luarocks, tree-sitter-cli, ripgrep, fd,
+38. Installed nodejs, npm, pnpm
+
