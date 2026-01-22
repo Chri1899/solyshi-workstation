@@ -24,6 +24,7 @@ unzip
 zip
 tar
 which
+fzf
 #less
 #man-db
 #man-pages

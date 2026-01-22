@@ -42,3 +42,4 @@
 33. Install nerd font jetbrains mono
 34. Installed neovim
 35. Installed wget, curl, zip, unzip and tar
+36. Installed fzf
