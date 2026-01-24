@@ -5,26 +5,25 @@ set_wallpaper = false  # We'll handle this with hyprpaper directly
 [config.reload_apps_list]
 waybar = true
 hyprland = true
-kitty = true
-mako = true
-hyprpaper = true
+#kitty = true
+#mako = true
+
+[[config.custom_keywords]]
+name = "colors"
+
 
 [templates.hyprland]
-input_path = "~/.config/hypr/colors.conf"
+input_path = "~/.config/matugen/templates/hyprland-colors.conf"
 output_path = "~/.config/hypr/colors.conf"
 
 [templates.waybar]
-input_path = "~/.config/waybar/colors.css"
+input_path = "~/.config/matugen/templates/waybar-colors.css"
 output_path = "~/.config/waybar/colors.css"
 
-[templates.kitty]
-input_path = "~/.config/kitty/colors.conf"
-output_path = "~/.config/kitty/colors.conf"
+#[templates.kitty]
+#input_path = "~/.config/kitty/colors.conf"
+#output_path = "~/.config/kitty/colors.conf"
 
-[templates.mako]
-input_path = "~/.config/mako/config"
-output_path = "~/.config/mako/config"
-
-[templates.hyprpaper]
-input_path = "~/.config/hypr/hyprpaper.conf"
-output_path = "~/.config/hypr/hyprpaper.conf"
+#[templates.mako]
+#input_path = "~/.config/mako/config"
+#output_path = "~/.config/mako/config"
