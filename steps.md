@@ -58,3 +58,5 @@
 48. Installed powerlevel10k git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 49. Installed man and zsh colored-man-pages
 50. Installed hyprpaper, set the wallpapers and configured monitors in hypr
+51. Installed waybar and matugen
+52. Made a waybar reload script with hypr keybinding

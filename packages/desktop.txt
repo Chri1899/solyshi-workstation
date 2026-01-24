@@ -5,7 +5,6 @@ xorg-xwayland
 
 # compositor
 hyprland
-hyprpaper
 
 # portals
 xdg-desktop-portal
@@ -16,6 +15,10 @@ kitty
 
 # status bar & sytem UI
 # wl-clipboard
+hyprpaper
+waybar
+matugen
+
 
 # login & session
 #gt6-wayland
