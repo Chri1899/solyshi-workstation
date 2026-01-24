@@ -26,8 +26,8 @@ tar
 which
 fzf
 #less
-#man-db
-#man-pages
+man-db
+man-pages
 
 # hardware
 mesa
