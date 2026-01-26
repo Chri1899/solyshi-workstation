@@ -18,6 +18,8 @@ kitty
 hyprpaper
 waybar
 matugen
+rofi-wayland
+mako
 
 
 # login & session
