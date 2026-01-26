@@ -66,3 +66,4 @@
 56. Tinkering with fonts, installed fira font
 59. More rofi configuration. First iteration done for now
 60. Installed mako
+61. Installed wl-clipboard and cliphist and integrated to hyprland

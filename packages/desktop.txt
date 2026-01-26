@@ -14,7 +14,8 @@ xdg-desktop-portal-hyprland
 kitty
 
 # status bar & sytem UI
-# wl-clipboard
+cliphist
+wl-clipboard
 hyprpaper
 waybar
 matugen
