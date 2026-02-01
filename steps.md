@@ -73,3 +73,4 @@
 65. sudo systemctl enable --now postgresql
 66. yay -S libreoffice
 67. Added thunderbird, added personal .de, personal .com samvanced dev, info and personal samvanced mail
+68. Installed spotify and keybind in hypr

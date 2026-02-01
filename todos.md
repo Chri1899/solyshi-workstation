@@ -6,5 +6,6 @@ decide between quickshell and preconfigured widgets. Probably the latter to star
 Continue waybar config 
 FIX ROFI
 Filemanager (dolphin maybe)
-spotify
+spicetify
 lockscreen
+Fix theming very important or i go crazy
