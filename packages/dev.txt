@@ -25,6 +25,9 @@ fd
 
 # virtualization helpers
 
+# DB
+postgresql
+
 # JDK / Java
 sdkman
 

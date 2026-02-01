@@ -68,3 +68,7 @@
 60. Installed mako
 61. Installed wl-clipboard and cliphist and integrated to hyprland
 62. Installed Vesktop and Tradingview
+63. Addes postgresql to dev packs
+64. sudo -iu postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
+65. sudo systemctl enable --now postgresql
+66. yay -S libreoffice

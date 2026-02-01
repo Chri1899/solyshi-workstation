@@ -5,3 +5,6 @@ install qt support
 decide between quickshell and preconfigured widgets. Probably the latter to start with and transition later.
 Continue waybar config 
 FIX ROFI
+Filemanager (dolphin maybe)
+spotify
+lockscreen
