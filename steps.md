@@ -78,3 +78,4 @@
 69. Reorganized theming and implemented a rofi background picker
 70. yay -S dolphin
 71. Added dolphin stow
+72. Made some more unifications for color schemes

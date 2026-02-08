@@ -1,9 +1,18 @@
 * {
-    background: #12140e;
-    foreground: #e2e3d8;
-    surface: #1e201a;
-    primary: #b1d18a;
-    secondary: #bfcbad;
-    tertiary: #a0d0cc;
-    error: #ffb4ab;
+    background:     #111318;
+    foreground:     #e1e2e9;
+    surface:        #111318;
+    surface-high:   #282a2f;
+    on-surface:     #e1e2e9;
+    
+    primary:        #a5c8fe;
+    on-primary:     #00315d;
+    primary-container: #214876;
+    
+    secondary:      #bcc7dc;
+    error:          #ffb4ab;
+    
+    border-color:   @primary;
+    selected-color: @primary;
+    selected-fg:    @on-primary;
 }

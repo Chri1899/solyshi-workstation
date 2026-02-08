@@ -36,7 +36,7 @@ tooltip {
 
 #clock:hover {
     transition: all .3s ease;
-    color: @foreground;
+    color: @primary;
 }
 
 #clock {
@@ -46,7 +46,7 @@ tooltip {
 }
 
 #workspaces button:hover {
-    color: rgba(0, 0, 0, 0);
+    color: @primary;
     border: none;
     text-shadow: 0px 3px 1.5px rgba(0, 0, 0, .5);
     transition: all 1s ease;
@@ -59,13 +59,13 @@ tooltip {
 }
 
 #workspaces button.empty {
-    color: rgba(0, 0, 0, 0);
+    color: @surface;
     border: none;
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
 }
 
 #workspaces button.empty:hover {
-    color: rgba(0, 0, 0, 0);
+    color: @on-surface;
     border: none;
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
     transition: all 1s ease;
@@ -106,7 +106,7 @@ tooltip {
     min-height: 10px;
     min-width: 80px;
     border-radius: 5px;
-    background: @background;
+    background: @surface;
 }
 
 #pulseaudio-slider highlight {

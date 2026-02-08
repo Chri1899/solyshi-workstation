@@ -8,11 +8,10 @@ waybar = true
 hyprland = true
 kitty = true
 rofi = true
-#mako = true
+mako = true
 
 [[config.custom_keywords]]
 name = "colors"
-
 
 [templates.hyprland]
 input_path = "~/.config/matugen/templates/hyprland-colors.conf"
@@ -30,6 +29,14 @@ output_path = "~/.config/kitty/colors.conf"
 input_path = "~/.config/matugen/templates/rofi-colors.rasi"
 output_path = "~/.config/rofi/colors.rasi"
 
-#[templates.mako]
-#input_path = "~/.config/mako/config"
-#output_path = "~/.config/mako/config"
+[templates.mako]
+input_path = "~/.config/matugen/templates/mako-colors"
+output_path = "~/.config/mako/colors"
+
+[templates.vesktop]
+input_path = "~/.config/matugen/templates/vesktop-colors.css"
+output_path = "~/.config/vesktop/themes/matugen.css"
+
+[templates.qutebrowser]
+input_path = "~/.config/matugen/templates/qute-colors.py"
+output_path = "~/.config/qutebrowser/colors.py"

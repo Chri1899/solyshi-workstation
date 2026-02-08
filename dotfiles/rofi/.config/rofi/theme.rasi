@@ -29,7 +29,7 @@ mainbox {
 
 inputbar {
     background-color:   @surface;
-    border-color:       @tertiary;
+    border-color:       @primary;
 
     border:         2px;
     border-radius:  16px;
@@ -40,12 +40,12 @@ inputbar {
 }
 
 prompt {
-    text-color: @secondary;
+    text-color: @primary;
 }
 
 entry {
     placeholder:        "Search";
-    placeholder-color:  @primary;
+    placeholder-color:  @on-surface;
 }
 
 message {
@@ -76,16 +76,16 @@ element {
 }
 
 element normal active {
-    text-color: @surface;
+    text-color: @primary;
 }
 
 element alternate active {
-    text-color: @surface;
+    text-color: @primary;
 }
 
 element selected normal, element selected active {
     background-color:   @primary;
-    text-color: @surface;
+    text-color: @on-primary;
 }
 
 element-icon {
