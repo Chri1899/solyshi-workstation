@@ -13,27 +13,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
--- Autocmd: cmake-tools Root auf aktuellen Projektordner setzen
-local last_cmake_root = nil
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    pattern = { "*.c", "*.cmake", "*.h", "*.cpp", "*.cxx" },
+-- Automatically set cwd to the project root (nearest CMakeLists.txt or .git)
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
     callback = function()
-        local ok, cmake_tools = pcall(require, "cmake-tools")
-        if not ok then return end
-
-        local cwd = vim.fn.getcwd()
-        if not cwd or cwd == "" then return end
-
-        if cwd == last_cmake_root then return end
-        last_cmake_root = cwd
-
-        vim.defer_fn(function()
-            vim.cmd { cmd = "CMakeSelectCwd", args = { cwd } }
-            cmake_tools.select_cwd(cwd)
-            cmake_tools.select_build_dir(cwd)
-            -- Optional: Info ausgeben
-            vim.notify("cmake-tools Projekt-Root gesetzt auf: " .. cwd, vim.log.levels.INFO)
-        end, 50)
+        local root = vim.fs.find({ "CMakeLists.txt", ".git" }, { upward = true })[1]
+        print(root)
+        if root then
+            vim.cmd("cd " .. vim.fs.dirname(root))
+        end
     end,
 })

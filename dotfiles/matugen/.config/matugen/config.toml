@@ -16,7 +16,7 @@ name = "colors"
 
 [templates.hyprland]
 input_path = "~/.config/matugen/templates/hyprland-colors.conf"
-output_path = "~/.config/hypr/colors.conf"
+output_path = "~/.config/hypr/appearance/colors.conf"
 
 [templates.waybar]
 input_path = "~/.config/matugen/templates/waybar-colors.css"

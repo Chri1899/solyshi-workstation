@@ -22,7 +22,6 @@ matugen
 rofi-wayland
 mako
 
-
 # login & session
 #gt6-wayland
 #gt6-wayland
@@ -36,3 +35,6 @@ gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
 gst-libav
+
+# File Manager
+dolphin

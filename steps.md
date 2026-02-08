@@ -76,3 +76,5 @@
 67. Added thunderbird, added personal .de, personal .com samvanced dev, info and personal samvanced mail
 68. Installed spotify and keybind in hypr
 69. Reorganized theming and implemented a rofi background picker
+70. yay -S dolphin
+71. Added dolphin stow
