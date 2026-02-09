@@ -4,7 +4,6 @@ set_wallpaper = false  # We'll handle this with hyprpaper directly
 mode = "dark"
 
 [config.reload_apps_list]
-waybar = true
 hyprland = true
 kitty = true
 rofi = true
