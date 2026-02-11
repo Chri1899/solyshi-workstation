@@ -32,5 +32,3 @@ opt.swapfile = false          -- Disable creation of swapfile
 opt.hlsearch = true   -- Highlight all matches in search
 opt.ignorecase = true -- Ignore case in search
 opt.smartcase = true  -- Match case if explicitly stated
-
-opt.autochdir = true
