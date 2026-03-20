@@ -249,4 +249,14 @@ timeout 3
 ## 17. Offene Punkte
 
 Siehe `todos.md`
-EOF
+
+---
+
+## 18. Hyprland — Scratchpads & Workspace Rules
+
+- Workspace-Zuweisungen: qutebrowser→WS2, dolphin→WS3, thunderbird→WS9
+- Scratchpads: Spotify (Super+Shift+M), Vesktop (Super+Shift+D), Terminal (Super+Shift+T)
+- Script: `~/.config/hypr/scripts/toggle-scratch-term.sh` für Terminal-Scratchpad
+- Smart Gaps aktiviert: einzelnes Fenster füllt Screen ohne Gaps/Border
+- Keybinds konsolidiert in `keybinds/main.conf`
+- windowrules.conf und layerrules.conf in hyprland.conf eingebunden
