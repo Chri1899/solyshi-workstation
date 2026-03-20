@@ -29,6 +29,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 export PATH="$SDKMAN_DIR/candidates/java/current/bin:$PATH"
+export PATH="$HOME/scripts:$PATH"
 
 # =============================
 # ALIASES
@@ -87,6 +88,12 @@ conf () {
     cd "$dir" || return
     tmux new-session -A -s "config"
 }
+
+# Bindings
+
+# Bindet den Sessionizer auf Strg + f
+bindkey -s '^f' 'tmux-sessionizer\n'
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

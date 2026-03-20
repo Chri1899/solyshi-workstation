@@ -57,7 +57,7 @@ chsh -s /bin/zsh
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
     ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   ```
-- Kitty: Padding 12px, matugen-Farben via `include colors.conf`
+- Kitty: Padding 12px, `placement_strategy center`, matugen-Farben via `include colors.conf`
 
 ---
 
@@ -68,7 +68,7 @@ git clone git@github.com:Chri1899/solyshi-workstation.git ~/solyshi-workstation
 stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow)
 ```
 
-Profile: `nvim kitty hypr qutebrowser emacs waybar assets zsh matugen rofi theme dolphin mako tmux`
+Profile: `nvim kitty hypr qutebrowser emacs waybar assets zsh matugen rofi theme dolphin mako tmux scripts`
 
 ---
 
@@ -159,6 +159,7 @@ sudo pacman -S neovim vim
 ```
 
 - Neovim: Config per stow verlinkt (`~/.config/nvim`)
+- Neovim Hintergrund auf `none` gesetzt für nahtloses Terminal-Padding
 - Plugins via luarocks, tree-sitter-cli, ripgrep, fd
 
 ---
@@ -174,8 +175,7 @@ sdk install java 25.0.0-tem   # optional
 sdk install gradle 9.x.x
 sdk install maven 3.x.x
 ```
-
-⚠️ Hinweis: SDKMAN installiert sich in `$SDKMAN_DIR/.sdkman/` — Pfad nach Installation prüfen.
+⚠️ Hinweis: SDKMAN installiert sich in `$SDKMAN_DIR/.sdkman/` — Pfad nach Installation prüfen und ggf. Inhalt eine Ebene nach oben verschieben.
 
 ### Node.js / Frontend
 ```bash
@@ -244,19 +244,47 @@ default 2026-01-20_20-56-11_linux-lts.conf
 timeout 3
 ```
 
+### fstab — nofail für externe Disks
+Alle HDDs/SSDs die nicht zwingend beim Boot verfügbar sein müssen mit `nofail` mounten:
+```
+UUID=xxxx /mnt/backup ext4 defaults,nofail 0 2
+```
+Verhindert Emergency Mode bei nicht verfügbaren Geräten.
+
 ---
 
-## 17. Offene Punkte
-
-Siehe `todos.md`
-
----
-
-## 18. Hyprland — Scratchpads & Workspace Rules
+## 17. Hyprland — Scratchpads & Workspace Rules
 
 - Workspace-Zuweisungen: qutebrowser→WS2, dolphin→WS3, thunderbird→WS9
-- Scratchpads: Spotify (Super+Shift+M), Vesktop (Super+Shift+D), Terminal (Super+Shift+T)
+- Scratchpads: Spotify (`Super+Shift+M`), Vesktop (`Super+Shift+D`), Terminal (`Super+Shift+T`)
 - Script: `~/.config/hypr/scripts/toggle-scratch-term.sh` für Terminal-Scratchpad
 - Smart Gaps aktiviert: einzelnes Fenster füllt Screen ohne Gaps/Border
 - Keybinds konsolidiert in `keybinds/main.conf`
-- windowrules.conf und layerrules.conf in hyprland.conf eingebunden
+- `windowrules.conf` und `layerrules.conf` in `hyprland.conf` eingebunden
+
+---
+
+## 18. Tmux — Sessionizer & Workflow
+
+### tmux-sessionizer
+Dynamisches Projekt-Management-Skript — sucht in `~/solyshi-workstation` und `~/projects` nach Ordnern, zeigt sie via fzf mit Live-Vorschau.
+
+- Existierende Session → `switch-client`
+- Neue Session → `new-session`
+- Pfad: `~/solyshi-workstation/dotfiles/scripts/scripts/tmux-sessionizer` (via stow nach `~/scripts/` verlinkt)
+
+### Hotkey-Integration (3 Ebenen)
+- **Zsh** `Ctrl+F` — Sessionizer direkt aus der Shell
+- **Tmux** `Prefix+F` — Sessionizer als zentriertes Popup (Wechsel während Programme laufen)
+
+### Roadmap (noch nicht umgesetzt)
+- [ ] **Vim-Tmux-Navigator** — `Ctrl+h/j/k/l` nahtlos zwischen Nvim-Splits und Tmux-Panes
+- [ ] **tmux-resurrect + tmux-continuum** — Session-Persistenz nach Reboot
+- [ ] **Harpoon** — schnelles Springen zwischen Projekt-Dateien via `Alt+1/2/3/4`
+- [ ] **vim-tmux-runner (VTR)** — Befehle aus Nvim an Tmux-Pane senden
+
+---
+
+## 19. Offene Punkte
+
+Siehe `todos.md`
