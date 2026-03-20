@@ -261,6 +261,9 @@ Verhindert Emergency Mode bei nicht verfügbaren Geräten.
 - Smart Gaps aktiviert: einzelnes Fenster füllt Screen ohne Gaps/Border
 - Keybinds konsolidiert in `keybinds/main.conf`
 - `windowrules.conf` und `layerrules.conf` in `hyprland.conf` eingebunden
+- Autostart: kitty→WS1, qutebrowser→WS2, thunderbird→WS9 (silent)
+- Screenshot-Keybinds: Print (fullscreen), Shift+Print (Bereich), Ctrl+Print (Clipboard)
+- Screenshots gespeichert in `~/Pictures/Screenshots/`
 
 ---
 

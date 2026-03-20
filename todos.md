@@ -46,3 +46,5 @@
 - [x] System aufgeräumt (verwaiste Pakete, WLAN-Treiber-Reste, wpa_supplicant Config)
 - [x] .gitignore für qutebrowser Auto-Dateien
 - [x] grim + slurp installiert
+- [x] Screenshot-Keybinds eingerichtet (grim + slurp)
+- [x] Autostart Apps auf Workspaces (kitty, qutebrowser, thunderbird)
