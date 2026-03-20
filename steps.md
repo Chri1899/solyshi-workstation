@@ -1,82 +1,252 @@
-1. sudo systemctl enable NetworkManager
-2. sudo systemctl start NetworkManager
-3. ( Create base repo for workstation config setup )
-4. sudo pacman -S vim
-5. Install fakeroot and debugedit
-7. Install make and gcc
-6. Install yay
-    - git clone https://aur.archlinux.org/yay.git
-    - cd yay
-    - makepkg -si
-7. Run those command once after install:
-    - yay -Y --gendb
-    - yay -Syu --devel
-    - yay -Y --devel --save
-8. Install meson and ninja
-9. Install pkg-config
-10. Install wayland
-11. yay -S wayland-protocols
-12. yay -S xorg-xwayland
-13.  yay -S hyprland
-14. yay -S kitty
-15. yay -S openssh
-16. ssh-keygen
-17. Install zsh
-18. chsh -s /bin/zsh
-19. Added autostart for hyprland to .zshrc
-20. Installed libinputs
-21. Installed ttf-jetbrains-mono
-22. Switched Hyprland keyboard layout to de
-23. Installed qutebrowser and added keybind to hypr conf
-24. Connected SSH to github and cloned .dotfiles
-25. Integrate dotfiles with a stow workflow. Use:
-    cd ~
-    stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow) 
-26. yay -S gst-plugins-{base,good,bad,ugly} gst-libav (for qutebrowser video playback)
-27. yay -S xdg-desktop-portal (??)
-28. Moved hyprland autostart to .zprofile and added zsh dotfiles package
-29. Installed xdg-desktop-portal-hyprland
+# solyshi-workstation — Setup Protocol
 
-30. Reorganized packages and installed xdg-user-dirs and xdg-utils
-31. Installed mesa, vulkan-radeo, libva-mesa-driver, vulkan-icd-loader
-32. Installed mesa-utils and vulkan-tools
-33. Install nerd font jetbrains mono
-34. Installed neovim
-35. Installed wget, curl, zip, unzip and tar
-36. Installed fzf
-37. Installed luarocks, tree-sitter-cli, ripgrep, fd,
-38. Installed nodejs, npm, pnpm
-39. Installed cargo
-40. Installed python3
-41. Installed sdkman
-42. Installed jdk25 and 21 with sdk install java "version" (21.xx.xx-tem and 25.x.x-tem)
-43. sdk install gradle 9.x.x
-44. sdk install maven 3.12.x
-45. Default qutebrowser config + dark mode
-46. Installed oh-my-zsh (github curl) and added autocompleteplugin (github clone)
-47. Installed zsh-syntax-highlighting git clone into .oh-my-zsh
-48. Installed powerlevel10k git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-49. Installed man and zsh colored-man-pages
-50. Installed hyprpaper, set the wallpapers and configured monitors in hypr
-51. Installed waybar and matugen
-52. Made a waybar reload script with hypr keybinding
-53. Fixed mislocation in wallpaper module
-54. Enabled ipc on hypr and made a simple matugen config.
-55. Some untracked little hypr changes and matugen support 
-56. Tinkering with fonts, installed fira font
-59. More rofi configuration. First iteration done for now
-60. Installed mako
-61. Installed wl-clipboard and cliphist and integrated to hyprland
-62. Installed Vesktop and Tradingview
-63. Addes postgresql to dev packs
-64. sudo -iu postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
-65. sudo systemctl enable --now postgresql
-66. yay -S libreoffice
-67. Added thunderbird, added personal .de, personal .com samvanced dev, info and personal samvanced mail
-68. Installed spotify and keybind in hypr
-69. Reorganized theming and implemented a rofi background picker
-70. yay -S dolphin
-71. Added dolphin stow
-72. Made some more unifications for color schemes
-73. Installed tmux
-74. Installed tailwind lsp
+Vollständiges Installationsprotokoll des solyshi Arch Linux Workstation-Setups.
+Kernel: linux-lts | WM: Hyprland | Shell: Zsh | Terminal: Kitty
+
+---
+
+## 1. Basis-System
+
+```bash
+sudo systemctl enable --now NetworkManager
+```
+
+- Base-Pakete: `base base-devel linux linux-lts linux-firmware linux-headers linux-lts-headers`
+- Boot: systemd-boot (kein GRUB), LTS als Standard-Eintrag in `/boot/loader/loader.conf`
+- AUR-Helper: yay
+  ```bash
+  git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+  yay -Y --gendb && yay -Syu --devel && yay -Y --devel --save
+  ```
+
+---
+
+## 2. Build-Toolchain
+
+```bash
+sudo pacman -S base-devel gcc make fakeroot debugedit meson ninja pkg-config cmake
+```
+
+---
+
+## 3. Wayland & Compositor
+
+```bash
+sudo pacman -S wayland wayland-protocols xorg-xwayland
+yay -S hyprland xdg-desktop-portal xdg-desktop-portal-hyprland
+sudo pacman -S xdg-user-dirs xdg-utils
+```
+
+- Hyprland-Autostart in `.zprofile` (nicht `.zshrc`)
+- Keyboard-Layout: `de` in Hyprland input.conf
+- Monitore: DP-3 (primary), konfiguriert in hyprpaper.conf
+
+---
+
+## 4. Shell & Terminal
+
+```bash
+sudo pacman -S zsh kitty
+chsh -s /bin/zsh
+```
+
+- Oh-My-Zsh via curl-Installer
+- Plugins: zsh-autosuggestions, zsh-syntax-highlighting (beide als git clone in ~/.oh-my-zsh/custom)
+- Theme: Powerlevel10k
+  ```bash
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+    ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  ```
+- Kitty: Padding 12px, matugen-Farben via `include colors.conf`
+
+---
+
+## 5. Dotfiles (stow)
+
+```bash
+git clone git@github.com:Chri1899/solyshi-workstation.git ~/solyshi-workstation
+stow -d ~/solyshi-workstation/dotfiles -t ~ $(cat ~/solyshi-workstation/profiles/desktop.stow)
+```
+
+Profile: `nvim kitty hypr qutebrowser emacs waybar assets zsh matugen rofi theme dolphin mako tmux`
+
+---
+
+## 6. Fonts
+
+```bash
+sudo pacman -S ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-fira-code ttf-hack
+```
+
+---
+
+## 7. Hardware & Grafik
+
+```bash
+sudo pacman -S mesa vulkan-radeon libva-mesa-driver vulkan-icd-loader
+sudo pacman -S mesa-utils vulkan-tools
+sudo pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+sudo pacman -S libpulse
+```
+
+---
+
+## 8. Theming (matugen)
+
+```bash
+yay -S matugen-bin
+```
+
+- Config: `~/.config/matugen/config.toml`
+- Templates für: hyprland, waybar, kitty, rofi, mako, vesktop, qutebrowser
+- Ausführen: `matugen image ~/wallpapers/<wallpaper>`
+- Reload: Hyprland, Kitty, Rofi, Mako werden automatisch neu geladen
+
+---
+
+## 9. Status Bar (Waybar)
+
+```bash
+sudo pacman -S waybar
+```
+
+- Config: `~/.config/waybar/config.jsonc`
+- Style: Pills-Design mit rgba-Hintergrund, matugen-Farben via `@import "colors.css"`
+- Reload-Keybind: `Super + R` → `~/.config/waybar/scripts/launch.sh`
+- Hyprland layerrule für Blur: `~/.config/hypr/rules/layerrules.conf`
+
+---
+
+## 10. Benachrichtigungen (Mako)
+
+```bash
+sudo pacman -S mako
+systemctl --user enable mako
+```
+
+- Config: `~/.config/mako/config` (Farben direkt eingebettet, kein `source=`)
+- Farben werden von matugen via Template generiert und direkt in config geschrieben
+
+---
+
+## 11. Wallpaper (hyprpaper)
+
+```bash
+yay -S hyprpaper
+```
+
+- Config: `~/.config/hypr/hyprpaper.conf`
+- Wallpaper-Picker via Rofi: `Super + W`
+- Wallpapers: `~/wallpapers/` (symlink via stow auf assets)
+
+---
+
+## 12. Launcher & Clipboard
+
+```bash
+sudo pacman -S rofi-wayland wl-clipboard cliphist
+```
+
+- Rofi: `Super + A` (drun), `Super + V` (clipboard via cliphist)
+- Clipboard-Integration in Hyprland autostart
+
+---
+
+## 13. Editoren
+
+```bash
+sudo pacman -S neovim vim
+```
+
+- Neovim: Config per stow verlinkt (`~/.config/nvim`)
+- Plugins via luarocks, tree-sitter-cli, ripgrep, fd
+
+---
+
+## 14. Entwicklungsumgebung
+
+### Java / JVM
+```bash
+yay -S sdkman-bin
+# SDKMAN_DIR muss in .zshrc auf $XDG_DATA_HOME/sdkman zeigen
+sdk install java 21.0.9-tem
+sdk install java 25.0.0-tem   # optional
+sdk install gradle 9.x.x
+sdk install maven 3.x.x
+```
+
+⚠️ Hinweis: SDKMAN installiert sich in `$SDKMAN_DIR/.sdkman/` — Pfad nach Installation prüfen.
+
+### Node.js / Frontend
+```bash
+sudo pacman -S nodejs npm pnpm typescript
+```
+
+### Python
+```bash
+sudo pacman -S python python-pip
+```
+
+### Rust
+```bash
+sudo pacman -S rust
+```
+
+### Datenbank
+```bash
+sudo pacman -S postgresql
+sudo -iu postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
+sudo systemctl enable --now postgresql
+```
+
+### Sonstige Dev-Tools
+```bash
+sudo pacman -S git openssh tmux fzf ripgrep fd tree-sitter-cli luarocks
+sudo pacman -S man-db man-pages
+```
+
+---
+
+## 15. Anwendungen
+
+```bash
+yay -S qutebrowser
+sudo pacman -S gst-plugins-{base,good,bad,ugly} gst-libav  # Video-Unterstützung
+
+yay -S vesktop          # Discord
+yay -S tradingview
+sudo pacman -S libreoffice-fresh
+sudo pacman -S thunderbird
+yay -S spotify
+sudo pacman -S dolphin
+sudo pacman -S steam
+yay -S prismlauncher    # Minecraft
+yay -S ausweisapp2
+```
+
+---
+
+## 16. System-Stabilität
+
+### Snapshots (Timeshift)
+```bash
+sudo pacman -S timeshift
+```
+- Modus: rsync (kein btrfs)
+- Ziel: `/mnt/archive` (UUID: 3f855919-60d7-4682-83b4-27523566ba9a)
+- Schedule: wöchentlich, 2 Snapshots
+- Ausschlüsse: `/mnt/**`, `/tmp/**`, `/var/log/**`, `/var/cache/pacman/pkg/**`, `/home/solyshi/**`
+
+### systemd-boot LTS
+```bash
+# /boot/loader/loader.conf
+default 2026-01-20_20-56-11_linux-lts.conf
+timeout 3
+```
+
+---
+
+## 17. Offene Punkte
+
+Siehe `todos.md`
+EOF
