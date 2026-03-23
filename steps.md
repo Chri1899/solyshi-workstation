@@ -85,7 +85,7 @@ sudo pacman -S ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-fira-code ttf-hack
 ```bash
 sudo pacman -S mesa vulkan-radeon libva-mesa-driver vulkan-icd-loader
 sudo pacman -S mesa-utils vulkan-tools
-sudo pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+sudo pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber pavucontrol
 sudo pacman -S libpulse
 ```
 

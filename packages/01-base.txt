@@ -50,6 +50,7 @@ pipewire-pulse
 pipewire-jack
 wireplumber
 libpulse
+pavucontrol
 
 # Fonts
 ttf-jetbrains-mono
