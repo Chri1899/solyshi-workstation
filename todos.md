@@ -51,3 +51,4 @@
 - [x] Workspace-Layout finalisiert und konsistent indexiert
 - [x] Bootstrap Script erstellt (interaktiv, dry-run, reproduzierbar)
 - [x] Package-Listen restrukturiert (01-04)
+- [x] Btop floating Scratchpad keybind

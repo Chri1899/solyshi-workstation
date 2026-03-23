@@ -49,3 +49,6 @@ gst-libav
 
 # File Manager
 dolphin
+
+# Resource Manager
+btop
