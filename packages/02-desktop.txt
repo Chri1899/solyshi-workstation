@@ -17,6 +17,8 @@ xdg-desktop-portal-hyprland
 
 # Terminal
 kitty
+zoxide
+eza
 
 # Status Bar
 waybar

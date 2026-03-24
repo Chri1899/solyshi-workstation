@@ -58,6 +58,7 @@ chsh -s /bin/zsh
     ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   ```
 - Kitty: Padding 12px, `placement_strategy center`, matugen-Farben via `include colors.conf`
+- zoxide + eza Navigation
 
 ---
 

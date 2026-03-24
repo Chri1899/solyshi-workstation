@@ -66,11 +66,38 @@ setopt AUTO_CD
 setopt CORRECT
 
 # ==============================================================================
-# Aliases — Navigation
+# Aliases — Modern Navigation (eza & zoxide)
 # ==============================================================================
-alias ll="ls -la"
-alias la="ls -A"
+if command -v eza > /dev/null; then
+  # Standard Listenansicht (wie dein ll)
+  alias ll="eza -l --icons --group-directories-first --git"
+  # Alles anzeigen inkl. versteckter Dateien (wie dein la)
+  alias la="eza -la --icons --group-directories-first --git"
+  # Nur Verzeichnisse anzeigen
+  alias ld="eza -lD --icons"
+  # Tree-View (extrem nützlich für Projekte!)
+  alias lt="eza --tree --level=2 --icons"
+else
+  alias ll="ls -la"
+  alias la="ls -A"
+fi
+
 alias cls="clear"
+
+# ==============================================================================
+# Zoxide Integration & Smart Jump
+# ==============================================================================
+eval "$(zoxide init zsh)"
+
+# Die "Jump & Peek" Funktion: 
+# Jumps into folder and executes 'll' immediately
+z() {
+  if [ "$#" -eq 0 ]; then
+    __zoxide_z
+  else
+    __zoxide_z "$@" && ll
+  fi
+}
 
 # ==============================================================================
 # Aliases — Git
@@ -116,3 +143,4 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 if [[ -o interactive && -z "$TMUX" && "$SHLVL" -eq 1 ]]; then
   fastfetch
 fi
+
