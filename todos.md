@@ -8,7 +8,6 @@
 ## 🟡 Medium Priority
 
 - [ ] **Vim-Tmux-Navigator** — `Ctrl+h/j/k/l` nahtlos zwischen Nvim und Tmux
-- [ ] **tmux-resurrect + tmux-continuum** — Session-Persistenz nach Reboot
 - [ ] **Harpoon** — Datei-Navigation via `Alt+1/2/3/4` in Nvim
 - [ ] **vim-tmux-runner (VTR)** — Befehle aus Nvim an Tmux-Pane senden
 - [ ] **Zsh Config aufräumen** — Plugins, Aliase, XDG-Pfade prüfen und dokumentieren
@@ -55,3 +54,5 @@
 - [x] Package-Listen restrukturiert (01-04)
 - [x] Btop floating Scratchpad keybind
 - [x] **Screenshot-Keybind** — grim + slurp in Hyprland einbinden
+- [x] tmux-resurrect + tmux-continuum eingerichtet (automatische Session-Persistenz)
+- [x] tmux Config aufgeräumt (base-index, escape-time, mouse, splits, reload-bind)

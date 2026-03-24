@@ -279,6 +279,11 @@ yay -S Btop
 ---
 
 ## 18. Tmux — Sessionizer & Workflow
+- tpm installiert nach `~/.config/tmux/plugins/tpm` (nicht im Repo, via .gitignore)
+- Plugins: tpm, tmux-sensible, tmux-resurrect, tmux-continuum
+- continuum-restore aktiviert — stellt Sessions automatisch nach Reboot wieder her
+- resurrect-capture-pane-contents aktiviert — speichert Pane-Inhalte
+- Keybinds: h/v für Splits, r für Reload, c für neues Fenster im aktuellen Pfad
 
 ### tmux-sessionizer
 Dynamisches Projekt-Management-Skript — sucht in `~/solyshi-workstation` und `~/projects` nach Ordnern, zeigt sie via fzf mit Live-Vorschau.
@@ -293,7 +298,6 @@ Dynamisches Projekt-Management-Skript — sucht in `~/solyshi-workstation` und `
 
 ### Roadmap (noch nicht umgesetzt)
 - [ ] **Vim-Tmux-Navigator** — `Ctrl+h/j/k/l` nahtlos zwischen Nvim-Splits und Tmux-Panes
-- [ ] **tmux-resurrect + tmux-continuum** — Session-Persistenz nach Reboot
 - [ ] **Harpoon** — schnelles Springen zwischen Projekt-Dateien via `Alt+1/2/3/4`
 - [ ] **vim-tmux-runner (VTR)** — Befehle aus Nvim an Tmux-Pane senden
 
