@@ -4,7 +4,9 @@
 
 - [ ] **Lockscreen einrichten** — kein Lockscreen aktiv (hyprlock + hypridle)
 - [ ] **Rofi Theming** — matugen-Farben greifen nicht konsistent, UI unfertig
-- [ ] **Overseer Nvim** -- Properly integrate overseer task runner in nvim for every possible stack I use
+- [ ] **Overseer Nvim** - Properly integrate overseer task runner in nvim for every possible stack I use
+- [ ] **README Creation** - README.md erstellen für das Gesamte Repo.
+- [ ] **Language** - Einheitliche Dokumentationssprache auf Englisch switchen
 
 ## 🟡 Medium Priority
 
