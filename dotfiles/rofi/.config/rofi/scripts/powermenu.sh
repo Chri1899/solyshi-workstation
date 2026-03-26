@@ -4,34 +4,33 @@ dir="$HOME/.config/rofi/powermenu/"
 theme='powermenu'
 
 # CMDs
-lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+uptime="$(uptime -p | sed -e 's/up //g')"
+host=$(hostname)
 
-# Options
-hibernate=''
+hibernate='󰒲'
 shutdown='󰐥'
 reboot='󰑓'
 lock=''
 suspend=''
 logout=''
-yes='Y'
-no='N'
+yes='✅'
+no='❌'
 
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p " $USER@$host" \
-		-mesg " Uptime: $uptime" \
+		-p "󰀉 $USER@$host" \
+		-mesg "󱎫 Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
 # Confirmation CMD
 confirm_cmd() {
-	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
+	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px; border: 2px; border-radius: 15px;}' \
 		-theme-str 'mainbox {orientation: vertical; children: [ "message", "listview" ];}' \
-		-theme-str 'listview {columns: 2; lines: 1;}' \
-		-theme-str 'element-text {horizontal-align: 0.5;}' \
+		-theme-str 'listview {columns: 2; lines: 1; spacing: 15px; margin: 10px;}' \
+		-theme-str 'element {padding: 15px; border-radius: 10px;}' \
+		-theme-str 'element-text {horizontal-align: 0.5; font: "JetBrainsMono NF 24";}' \
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
 		-p 'Confirmation' \
@@ -60,18 +59,12 @@ run_cmd() {
 		elif [[ $1 == '--hibernate' ]]; then
 			systemctl hibernate
 		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
+			if [[ "$XDG_CURRENT_DESKTOP" == 'Hyprland' ]]; then
+				hyprctl dispatch exit 0
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit
-			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi
 		fi
 	else
@@ -92,10 +85,11 @@ case ${chosen} in
 		run_cmd --hibernate
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
+		# Hier hyprlock eintragen, falls du es nutzt
+		if [[ -x '/usr/bin/hyprlock' ]]; then
+			hyprlock
+		elif [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
 		fi
         ;;
     $suspend)
