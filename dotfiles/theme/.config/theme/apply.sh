@@ -18,3 +18,4 @@ matugen image "$WALLPAPER"
 hyprctl reload
 makoctl reload
 ~/.config/waybar/scripts/launch.sh
+kill -SIGUSR1 $(pgrep kitty)

@@ -1,7 +1,7 @@
-background-color=#12140e
-text-color=#e2e3d8
-border-color=#b1d18a
-progress-color=over #b1d18a
+background-color=#1a1111
+text-color=#f1dedd
+border-color=#ffb3ae
+progress-color=over #ffb3ae
 
 [urgency=high]
 background-color=#93000a
