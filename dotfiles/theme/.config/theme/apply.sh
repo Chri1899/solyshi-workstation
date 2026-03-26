@@ -19,3 +19,4 @@ hyprctl reload
 makoctl reload
 ~/.config/waybar/scripts/launch.sh
 kill -SIGUSR1 $(pgrep kitty)
+echo "config-source" > "${XDG_RUNTIME_DIR}/qutebrowser/fifo" 2>/dev/null || true

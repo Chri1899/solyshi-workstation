@@ -1,92 +1,68 @@
-# Matugen generated colors
+# Matugen generated colors for qutebrowser
 
-# Background
-c.colors.webpage.bg = '#0f1417'
+# Webpage background (Dark mode support)
+c.colors.webpage.bg = "#18130b"
+c.colors.webpage.preferred_color_scheme = "dark"
+c.colors.webpage.darkmode.enabled = (
+    True  # Optional, falls du echtes Dark-Theming willst
+)
 
-# Completion
-c.colors.completion.category.bg = '#0f1417'
-c.colors.completion.category.fg = '#dfe3e7'
-c.colors.completion.category.border.top = '#0f1417'
-c.colors.completion.category.border.bottom = '#0f1417'
-c.colors.completion.even.bg = '#0f1417'
-c.colors.completion.odd.bg = '#0f1417'
-c.colors.completion.fg = '#dfe3e7'
-c.colors.completion.item.selected.bg = '#8ccff1'
-c.colors.completion.item.selected.fg = '#003547'
-c.colors.completion.item.selected.border.top = '#8ccff1'
-c.colors.completion.item.selected.border.bottom = '#8ccff1'
-c.colors.completion.match.fg = '#b4cad6'
-c.colors.completion.scrollbar.bg = '#0f1417'
-c.colors.completion.scrollbar.fg = '#8ccff1'
+# Completion (Vorschläge in der Befehlszeile)
+c.colors.completion.category.bg = "#3a342b"
+c.colors.completion.category.fg = "#f0be6d"
+c.colors.completion.category.border.top = (
+    "#3a342b"
+)
+c.colors.completion.category.border.bottom = (
+    "#3a342b"
+)
+c.colors.completion.even.bg = "#18130b"
+c.colors.completion.odd.bg = "#201b13"
+c.colors.completion.fg = "#ece1d4"
+c.colors.completion.item.selected.bg = "#f0be6d"
+c.colors.completion.item.selected.fg = "#432c00"
+c.colors.completion.match.fg = "#b5cea4"
+c.colors.completion.scrollbar.bg = "#18130b"
+c.colors.completion.scrollbar.fg = "#f0be6d"
 
 # Context menu
-c.colors.contextmenu.menu.bg = '#0f1417'
-c.colors.contextmenu.menu.fg = '#dfe3e7'
-c.colors.contextmenu.selected.bg = '#8ccff1'
-c.colors.contextmenu.selected.fg = '#003547'
+c.colors.contextmenu.menu.bg = "#18130b"
+c.colors.contextmenu.menu.fg = "#ece1d4"
+c.colors.contextmenu.selected.bg = "#f0be6d"
+c.colors.contextmenu.selected.fg = "#432c00"
 
 # Downloads
-c.colors.downloads.bar.bg = '#0f1417'
-c.colors.downloads.start.bg = '#8ccff1'
-c.colors.downloads.start.fg = '#003547'
-c.colors.downloads.stop.bg = '#c7c2ea'
-c.colors.downloads.error.bg = '#ffb4ab'
-c.colors.downloads.error.fg = '#690005'
+c.colors.downloads.bar.bg = "#18130b"
+c.colors.downloads.start.bg = "#f0be6d"
+c.colors.downloads.start.fg = "#432c00"
+c.colors.downloads.stop.bg = "#374c2c"
+c.colors.downloads.error.bg = "#ffb4ab"
+c.colors.downloads.error.fg = "#690005"
 
-# Hints
-c.colors.hints.bg = '#8ccff1'
-c.colors.hints.fg = '#003547'
-c.colors.hints.match.fg = '#b4cad6'
-
-# Keyhint
-c.colors.keyhint.bg = '#0f1417'
-c.colors.keyhint.fg = '#dfe3e7'
-c.colors.keyhint.suffix.fg = '#8ccff1'
-
-# Messages
-c.colors.messages.error.bg = '#ffb4ab'
-c.colors.messages.error.fg = '#690005'
-c.colors.messages.error.border = '#ffb4ab'
-c.colors.messages.info.bg = '#8ccff1'
-c.colors.messages.info.fg = '#003547'
-c.colors.messages.info.border = '#8ccff1'
-c.colors.messages.warning.bg = '#b4cad6'
-c.colors.messages.warning.fg = '#1f333d'
-c.colors.messages.warning.border = '#b4cad6'
-
-# Prompts
-c.colors.prompts.bg = '#0f1417'
-c.colors.prompts.fg = '#dfe3e7'
-c.colors.prompts.border = '#8ccff1'
-c.colors.prompts.selected.bg = '#8ccff1'
-c.colors.prompts.selected.fg = '#003547'
+# Hints (Die Buchstaben zum Springen)
+c.colors.hints.bg = "#f0be6d"
+c.colors.hints.fg = "#432c00"
+c.colors.hints.match.fg = "#dbc3a1"
 
 # Statusbar
-c.colors.statusbar.normal.bg = '#0f1417'
-c.colors.statusbar.normal.fg = '#dfe3e7'
-c.colors.statusbar.insert.bg = '#c7c2ea'
-c.colors.statusbar.insert.fg = '#302d4c'
-c.colors.statusbar.passthrough.bg = '#b4cad6'
-c.colors.statusbar.passthrough.fg = '#1f333d'
-c.colors.statusbar.command.bg = '#0f1417'
-c.colors.statusbar.command.fg = '#dfe3e7'
-c.colors.statusbar.url.fg = '#dfe3e7'
-c.colors.statusbar.url.success.http.fg = '#c7c2ea'
-c.colors.statusbar.url.success.https.fg = '#c7c2ea'
-c.colors.statusbar.url.error.fg = '#ffb4ab'
-c.colors.statusbar.url.warn.fg = '#b4cad6'
-c.colors.statusbar.url.hover.fg = '#8ccff1'
+c.colors.statusbar.normal.bg = "#18130b"
+c.colors.statusbar.normal.fg = "#ece1d4"
+c.colors.statusbar.insert.bg = "#b5cea4"
+c.colors.statusbar.insert.fg = "#223518"
+c.colors.statusbar.command.bg = "#18130b"
+c.colors.statusbar.command.fg = "#ece1d4"
+c.colors.statusbar.url.success.https.fg = "#f0be6d"
+c.colors.statusbar.url.hover.fg = "#dbc3a1"
 
-# Tabs
-c.colors.tabs.bar.bg = '#0f1417'
-c.colors.tabs.even.bg = '#1b2023'
-c.colors.tabs.even.fg = '#dfe3e7'
-c.colors.tabs.odd.bg = '#1b2023'
-c.colors.tabs.odd.fg = '#dfe3e7'
-c.colors.tabs.selected.even.bg = '#8ccff1'
-c.colors.tabs.selected.even.fg = '#003547'
-c.colors.tabs.selected.odd.bg = '#8ccff1'
-c.colors.tabs.selected.odd.fg = '#003547'
-c.colors.tabs.indicator.start = '#8ccff1'
-c.colors.tabs.indicator.stop = '#c7c2ea'
-c.colors.tabs.indicator.error = '#ffb4ab'
+# Tabs (Hier habe ich den "Waybar-Look" eingebaut)
+c.colors.tabs.bar.bg = "#18130b"
+c.colors.tabs.even.bg = "#201b13"
+c.colors.tabs.even.fg = "#d2c4b4"
+c.colors.tabs.odd.bg = "#201b13"
+c.colors.tabs.odd.fg = "#d2c4b4"
+c.colors.tabs.selected.even.bg = "#f0be6d"
+c.colors.tabs.selected.even.fg = "#432c00"
+c.colors.tabs.selected.odd.bg = "#f0be6d"
+c.colors.tabs.selected.odd.fg = "#432c00"
+c.colors.tabs.indicator.start = "#f0be6d"
+c.colors.tabs.indicator
