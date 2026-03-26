@@ -2,119 +2,106 @@
 @import "colors.css";
 
 * {
-    font-family: "JetBrains Mono Nerd Font";
+    font-family: "JetBrainsMono NF", "Icomoon-Feather", "Noto Color Emoji";
     font-size: 13px;
-}
-
-/* Modules */
-.modules-left {
-    border-radius: 8px;
-    background-color: @surface_container;
-    padding: 0px 8px;
-    margin: 4px 0px 4px 4px;
-}
-
-.modules-center {
-    border-radius: 8px;
-    background-color: @surface_container;
-    padding: 0px 8px;
-    margin: 4px 0px 4px 4px;
-}
-
-.modules-right {
-    border-radius: 8px;
-    background-color: @surface_container;
-    padding: 0px 8px;
-    margin: 4px 4px 4px 0px;
-}
-
-/* Left Module Specifics */
-#workspaces {
-    margin: 4 0 4 0;
-    border-radius: 8px;
-}
-
-#workspaces button {
-    background-color: @surface_container;
-    color: @primary;
-}
-
-#workspaces button:hover {
-    background: @on_primary;
-    border: none;
-    transition: all 1s ease;
-}
-
-#workspaces button.focused {
-    color: @primary;
-}
-
-#workspaces button.active {
-    color: @surface_container;
-    background-color: @primary;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-
-#workspaces button.urgent {
-    background-color: @error;
-    color: @surface_container;
-
+    font-weight: bold;
 }
 
 window#waybar {
     background: transparent;
-    background-color: transparent;
-    color: @secondary;
-    transition-property: background-color;
-    transition-duration: 0.1s;
 }
 
-#clock {
-    background-color: @surface_container;
-    color: @primary;
-    border-radius: 14px;
-    padding: 0 12 0 12;
+.modules-left,
+.modules-center,
+.modules-right {
+    border-radius: 12px;
+    background-color: @surface_container_low;
+    padding: 0px 6px;
+    margin: 2px 5px;
+    border: 1px solid @outline_variant;
 }
 
-#clock:hover {
+/* --- WORKSPACES --- */
+#workspaces button {
+    color: @on_surface_variant;
+    padding: 0 8px;
+    margin: 2px 2px;
+    border-radius: 8px;
+}
+
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+    min-width: 35px;
+    box-shadow: 0px 0px 10px @primary;
+}
+
+/* --- CPU & MEMORY (Neu strukturiert) --- */
+#cpu,
+#memory {
+    padding: 0 8px;
+    margin: 2px 3px;
     background-color: @surface_container_high;
+    border-radius: 6px;
+    border: 1px solid @outline_variant;
 }
 
 #cpu {
-    padding: 0px 4px;
-    transition: all .3s ease;
-    color: @primary;
+    color: @tertiary;
 }
 
 #memory {
-    padding: 0px 4px;
-    transition: all .3s ease;
     color: @secondary;
 }
 
-#pulseaudio-slider {
-    padding: 0;
-    margin: 0;
+#clock {
+    color: @primary;
+    background-color: transparent;
+    border: 1px solid @primary;
+    padding: 0 10px;
+    margin: 2px 4px;
+    border-radius: 8px;
 }
 
-#pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
-    opacity: 0;
-    border: none;
-    box-shadow: none;
+#clock:hover {
+    background-color: @primary;
+    color: @on_primary;
+    transition: all 0.3s ease;
+}
+
+/* --- POWER MENU --- */
+#custom-powermenu {
+    color: @error;
+    background-color: @surface_container_high;
+    border: 1px solid @error;
+    border-radius: 8px;
+    /* Margin von 4px auf 2px reduziert, um die Bar-Höhe nicht zu sprengen */
+    margin: 2px 2px 2px 5px;
+    padding: 0 10px;
+}
+
+#custom-powermenu:hover {
+    background-color: @error;
+    color: @on_error;
+}
+
+/* --- PULSEAUDIO & SLIDER --- */
+#pulseaudio {
+    color: @primary;
+    padding-right: 5px;
 }
 
 #pulseaudio-slider trough {
-    min-height: 10px;
-    min-width: 80px;
+    min-height: 4px;
+    /* Dünner wirkt edler */
+    min-width: 70px;
     border-radius: 5px;
-    background: @surface;
+    background-color: @surface_variant;
+    /* Margin von 8px auf 2px reduziert -> Das ist der Hauptgrund für die Höhe */
+    margin: 2px 0;
 }
 
 #pulseaudio-slider highlight {
-    min-width: 10px;
     border-radius: 5px;
-    background: @primary;
+    background-color: @primary;
 }
