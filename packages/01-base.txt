@@ -57,6 +57,7 @@ ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-fira-code
 ttf-hack
+noto-fonts-emoji
 
 # Misc System
 xdg-user-dirs

@@ -50,3 +50,7 @@
 imagebox {
     background-image: url("{{image}}", height);
 }
+
+userimage {
+    background-image: url("{{image}}", height);
+}

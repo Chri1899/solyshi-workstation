@@ -1,15 +1,26 @@
 @import "~/.config/rofi/colors.rasi"
 
 * {
-    font: "JetBrainsMono Nerd Font Propo 16";
-    background:     @surface;
-    background-alt: @surface-container-low;
-    foreground:     @secondary;
-    selected:       @primary;
-    urgent:         @error;
+  font: "JetBrainsMono NF 12";
+
+  background:           @surface;
+  foreground:           @on-surface;
+
+  background-alt:       @primary;
+  foreground-alt:       @on-primary;
+
+  active:               @on-primary-container;
+  selected:             @inverse-primary;
+
+  urgent:               @primary-container;
+  on-urgent:            @on-error;
+
+  bg-color:             transparent;
+
+  margin:               0;
+  padding:              0;
+  spacing:              0;
 }
-
-
 
 /*****----- Configuration -----*****/
 configuration {
@@ -22,21 +33,17 @@ USE_BUTTONS=YES
 
 /*****----- Main Window -----*****/
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       660px;
+    width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
 
-    /* properties for all widgets */
-    enabled:                     true;
-    margin:                      0px;
     padding:                     0px;
-    border:                      4px solid;
-    border-radius:               20px;
+    border:                      0px solid;
+    border-radius:               0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
@@ -44,86 +51,69 @@ window {
 
 /*****----- Main Box -----*****/
 mainbox {
-    enabled:                     true;
-    spacing:                     15px;
-    margin:                      0px;
-    padding:                     30px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
     background-color:            transparent;
-    children:                    ["listview" ];
+    orientation:                 horizontal;
+    children:                    [ "listview", "imagebox" ];
+}
+
+/*****----- Imagebox -----*****/
+imagebox {
+    expand:                      false;
+    width:                       500px;
+    spacing:                     0px;
+    padding:                     100px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "dummy", "message" ];
+}
+
+/*****----- User -----*****/
+userimage {
+    margin:                      0px 0px;
+    border:                      10px;
+    border-radius:               0px;
+    border-color:                @background-alt;
+    background-color:            transparent;
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
-    enabled:                     true;
-    spacing:                     15px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px;
+    padding:                     20px;
     border-radius:               0px;
-    border-color:                @selected;
-    background-color:            transparent;
-    text-color:                  @foreground;
-    children:                    [ "prompt"];
+    background-color:            @urgent;
+    text-color:                  @background;
+    children:                    [ "dummy", "prompt", "dummy"];
 }
 
 dummy {
     background-color:            transparent;
 }
 
-textbox-prompt-colon {
-    enabled:                     true;
-    expand:                      false;
-    str:                         "";
-    padding:                     12px 16px;
-    border-radius:               100%;
-    background-color:            @urgent;
-    text-color:                  @background;
-}
 prompt {
-    enabled:                     true;
-    padding:                     12px;
-    border-radius:               100%;
-    background-color:            @active;
-    text-color:                  @background;
+    background-color:            inherit;
+    text-color:                  inherit;
 }
 
 /*****----- Message -----*****/
 message {
     enabled:                     true;
     margin:                      0px;
-    padding:                     12px;
-    border:                      0px solid;
-    border-radius:               100%;
-    border-color:                @selected;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
+    padding:                     20px;
+    border-radius:               0px;
+    background-color:            @active;
+    text-color:                  @background;
 }
 textbox {
     background-color:            inherit;
     text-color:                  inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    placeholder-color:           @foreground;
-    blink:                       true;
-    markup:                      true;
-}
-error-message {
-    padding:                     12px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
-    background-color:            @background;
-    text-color:                  @foreground;
 }
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     4;
-    lines:                       1;
+    columns:                     2;
+    lines:                       3;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -132,32 +122,23 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     15px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
+    spacing:                     30px;
+    margin:                      30px;
     background-color:            transparent;
-    text-color:                  @foreground;
     cursor:                      "default";
 }
 
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     0px;
-    margin:                      0px;
-    padding:                     40px 10px;
-    border:                      0px solid;
-    border-radius:               100%;
-    border-color:                @selected;
+    padding:                     20px 10px;
+    border-radius:               0px;
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element-text {
-    font:                        "JetBrains Mono Nerd Font Bold 32";
+    font:                        "feather bold 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -165,6 +146,6 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    background-color:            var(selected);
-    text-color:                  var(background);
+    background-color:            @selected;
+    text-color:                  @background;
 }
