@@ -1,151 +1,82 @@
-@import "~/.config/rofi/colors.rasi"
+@import "colors.rasi"
 
 * {
-  font: "JetBrainsMono NF 12";
-
-  background:           @surface;
-  foreground:           @on-surface;
-
-  background-alt:       @primary;
-  foreground-alt:       @on-primary;
-
-  active:               @on-primary-container;
-  selected:             @inverse-primary;
-
-  urgent:               @primary-container;
-  on-urgent:            @on-error;
-
-  bg-color:             transparent;
-
-  margin:               0;
-  padding:              0;
-  spacing:              0;
-}
-
-/*****----- Configuration -----*****/
-configuration {
-    show-icons:                 false;
-}
-
-/*
-USE_BUTTONS=YES
-*/
-
-/*****----- Main Window -----*****/
-window {
-    transparency:                "real";
-    location:                    center;
-    anchor:                      center;
-    fullscreen:                  false;
-    width:                       800px;
-    x-offset:                    0px;
-    y-offset:                    0px;
-
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
-    cursor:                      "default";
-    background-color:            @background;
-}
-
-/*****----- Main Box -----*****/
-mainbox {
-    background-color:            transparent;
-    orientation:                 horizontal;
-    children:                    [ "listview", "imagebox" ];
-}
-
-/*****----- Imagebox -----*****/
-imagebox {
-    expand:                      false;
-    width:                       500px;
-    spacing:                     0px;
-    padding:                     100px;
-    background-color:            transparent;
-    children:                    [ "inputbar", "dummy", "message" ];
-}
-
-/*****----- User -----*****/
-userimage {
-    margin:                      0px 0px;
-    border:                      10px;
-    border-radius:               0px;
-    border-color:                @background-alt;
-    background-color:            transparent;
-}
-
-/*****----- Inputbar -----*****/
-inputbar {
-    padding:                     20px;
-    border-radius:               0px;
-    background-color:            @urgent;
-    text-color:                  @background;
-    children:                    [ "dummy", "prompt", "dummy"];
-}
-
-dummy {
-    background-color:            transparent;
-}
-
-prompt {
-    background-color:            inherit;
-    text-color:                  inherit;
-}
-
-/*****----- Message -----*****/
-message {
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     20px;
-    border-radius:               0px;
-    background-color:            @active;
-    text-color:                  @background;
-}
-textbox {
-    background-color:            inherit;
-    text-color:                  inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
-}
-
-/*****----- Listview -----*****/
-listview {
-    enabled:                     true;
-    columns:                     2;
-    lines:                       3;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
-    layout:                      vertical;
-    reverse:                     false;
-    fixed-height:                true;
-    fixed-columns:               true;
+    font: "JetBrainsMono NF 12";
+    background: @surface;
+    foreground: @on-surface;
+    accent: @primary;
     
-    spacing:                     30px;
-    margin:                      30px;
-    background-color:            transparent;
-    cursor:                      "default";
+    background-color: transparent;
+    text-color: @foreground;
+    margin: 0;
+    padding: 0;
 }
 
-/*****----- Elements -----*****/
+window {
+    transparency: "real";
+    location: center;
+    width: 800px;
+    border: 2px;
+    border-color: @outline-variant;
+    border-radius: 20px;
+    background-color: @background;
+}
+
+mainbox {
+    orientation: horizontal;
+    children: [ "listview", "imagebox" ];
+}
+
+listview {
+    columns: 2;
+    lines: 3;
+    spacing: 20px;
+    margin: 30px;
+    fixed-height: true;
+}
+
 element {
-    enabled:                     true;
-    padding:                     20px 10px;
-    border-radius:               0px;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    cursor:                      pointer;
+    padding: 25px 10px;
+    border-radius: 15px;
+    background-color: @surface-container-high;
 }
-element-text {
-    font:                        "feather bold 32";
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
-}
+
 element selected.normal {
-    background-color:            @selected;
-    text-color:                  @background;
+    background-color: @inverse-primary;
+    text-color: @inverse-surface;
+}
+
+element-icon {
+    enabled: false;
+}
+
+element-text {
+    font: "JetBrainsMono NF 32";
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    text-color: inherit;
+}
+
+imagebox {
+    width: 350px;
+    padding: 80px 30px;
+    children: [ "inputbar", "dummy", "message" ];
+}
+
+inputbar {
+    padding: 12px;
+    border-radius: 12px;
+    background-color: @error-container;
+    text-color: @on-error-container;
+    children: [ "dummy", "prompt", "dummy" ];
+}
+
+message {
+    padding: 12px;
+    border-radius: 12px;
+    background-color: @surface-container-highest;
+}
+
+textbox {
+    horizontal-align: 0.5;
 }

@@ -1,83 +1,74 @@
 @import "colors.rasi"
 
 * {
-  font:                 "JetBrains Mono Nerd 12";
+  font: "JetBrains Mono Nerd 12";
 
-  background:           @surface;
-  foreground:           @on-surface;
+  /* Safe Matugen Mappings */
+  accent:         @primary;
+  on-accent:      @on-primary;
+  bg-main:        @surface;
+  fg-main:        @on-surface;
+  brdr-col:       @outline-variant;
+  urgent:         @error;
+  on-urgent:      @on-error;
 
-
-  background-alt:       @primary;
-  foreground-alt:       @on-primary;
-
-  active:               @secondary;
-  on-active:            @on-secondary;
-
-  selected:             @tertiary-container;
-  selected-text:        @on-tertiary-container;
-
-  urgent:               @error;
-  on-urgent:            @on-error;
-
-  bg-color:             transparent;
-
-  margin:               0;
-  padding:              0;
-  spacing:              0;
+  /* Force transparency for all helper containers */
+  background-color:   transparent;
+  margin:         0;
+  padding:        0;
+  spacing:        0;
 }
 
 window {
-    /* properties for window widget */
     transparency:       "real";
     location:           center;
     anchor:             center;
-    fullscreen:         false;
     width:              1000px;
-    x-offset:           0px;
-    y-offset:           0px;
-
-    /* properties for all widgets */
-    cenabled:            true;
+    
+    /* Fixed border syntax */
+    border:             2px;
+    border-color:       @brdr-col; 
     border-radius:      15px;
-    cursor:             default;
-    background-color:   @background;
+    background-color:   @bg-main;
 }
 
 mainbox {
     enabled:            true;
     spacing:            0px;
-    background-color:   @bg-color;
     orientation:        horizontal;
     children:           [ "imagebox", "listbox" ];
+    /* Ensure no color leaks here */
+    background-color:   transparent;
 }
 
 imagebox {
     padding:            20px;
-    background-color:   @bg-color;
     orientation:        vertical;
     children:           [ "inputbar", "dummy", "mode-switcher" ];
+    /* The image is defined in colors.rasi, we just ensure the box itself is clear */
+    background-color:   transparent;
 }
 
 listbox {
-    spacing:            20px;
+    spacing:            10px;
     padding:            20px;
-    background-color:   @bg-color;
+    /* Hard background for the list side to cover any transparency issues */
+    background-color:   @bg-main; 
     orientation:        vertical;
     children:           [ "message", "listview" ];
-}
-
-dummy {
-    background-color:   @bg-color;
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:            true;
     spacing:            10px;
-    padding:            15px;
+    padding:            12px 16px;
     border-radius:      10px;
-    background-color:   @background-alt;
-    text-color:         @foreground-alt;
+    border:             1px;
+    border-color:       @brdr-col;
+    /* Using Matugen surface for the search bar background */
+    background-color:   @surface-container-highest;
+    text-color:         @fg-main;
     children:           [ "textbox-prompt-colon", "entry" ];
 }
 
@@ -85,57 +76,38 @@ textbox-prompt-colon {
     enabled:            true;
     expand:             false;
     str:                "";
-    background-color:   inherit;
-    text-color:         inherit;
+    text-color:         @accent;
+    background-color:   transparent;
 }
 
 entry {
     enabled:            true;
-    background-color:   inherit;
-    text-color:         inherit;
+    text-color:         @fg-main;
     cursor:             text;
     placeholder:        "Search";
-    placeholder-color:  inherit;
+    placeholder-color:  @on-surface-variant;
+    background-color:   transparent;
 }
 
 /*****----- Mode Switcher -----*****/
-mode-switcher {
-    enabled:            true;
-    spacing:            20px;
-    background-color:   @bg-color;
-    text-color:         @foreground;
-}
-
 button {
     padding:            10px;
-    border-radius:      10px;
-    background-color:   @background-alt;
-    text-color:         @foreground-alt;
-    cursor:             pointer;
+    border-radius:      8px;
+    background-color:   @surface-container-high;
+    text-color:         @on-surface-variant;
 }
 
 button selected {
-    background-color:   @selected;
-    text-color:         @selected-text;
+    background-color:   @accent;
+    text-color:         @on-accent;
 }
 
-/*****----- Listview -----*****/
+/*****----- Listview & Elements -----*****/
 listview {
     enabled:            true;
     columns:            1;
     lines:              8;
-    cycle:              true;
-    dynamic:            true;
-    scrollbar:          false;
-    layout:             vertical;
-    reverse:            false;
-    fixed-height:       true;
-    fixed-columns:      true;
-
-    spacing:            10px;
-    background-color:   @bg-color;
-    text-color:         @foreground;
-    cursor:             "default";
+    background-color:   transparent;
 }
 
 /*****----- Elements -----*****/
@@ -144,69 +116,49 @@ element {
     spacing:            15px;
     padding:            8px;
     border-radius:      10px;
-    background-color:   @bg-color;
-    text-color:         @foreground;
-    cursor:             pointer;
+    text-color:         @fg-main;
+    background-color:   transparent;
 }
 
+/* Normal state: Not selected, not active */
 element normal.normal {
-    background-color:   inherit;
-    text-color:         inherit;
+    background-color:   transparent;
+    text-color:         @fg-main;
 }
 
+/* Active state: This highlights windows that are currently open (in 'window' mode) */
+element normal.active {
+    background-color:   @surface-container-highest;
+    text-color:         @accent;
+    border:             1px;
+    border-color:       @accent;
+}
+
+/* Selected state: When you hover/navigate over a normal item */
+element selected.normal {
+    background-color:   @accent;
+    text-color:         @on-accent;
+}
+
+/* Selected Active state: When you hover over an already active window */
+element selected.active {
+    background-color:   @urgent;
+    text-color:         @on-urgent;
+}
+
+/* Urgent state: For things like battery warnings etc. */
 element normal.urgent {
     background-color:   @urgent;
     text-color:         @on-urgent;
 }
 
-element normal.active {
-    background-color:   @active;
-    text-color:         @on-active;
-}
-
-element selected.normal {
-    background-color:   @selected;
-    text-color:         @selected-text;
-}
-
-element selected.urgent {
-    background-color:   @urgent;
-    text-color:         @on-urgent;
-}
-
-element selected.active {
-    background-color:            @urgent;
-    text-color:                  @on-urgent;
-}
 element-icon {
-    background-color:            @bg-color;
-    text-color:                  inherit;
-    size:                        32px;
-    cursor:                      inherit;
-}
-element-text {
-    background-color:            @bg-color;
-    text-color:                  inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
+    size:               32px;
+    background-color:   transparent;
 }
 
-/*****----- Message -----*****/
-message {
-    background-color:            @bg-color;
-}
-textbox {
-    padding:                     15px;
-    border-radius:               10px;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
-}
-error-message {
-    padding:                     15px;
-    border-radius:               20px;
-    background-color:            @background;
-    text-color:                  @foreground;
+element-text {
+    text-color:         inherit;
+    vertical-align:     0.5;
+    background-color:   transparent;
 }
