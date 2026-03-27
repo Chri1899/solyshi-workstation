@@ -23,6 +23,7 @@ tree-sitter-cli
 ripgrep
 fd
 tmux
+zeal
 
 # Databases
 postgresql
@@ -42,3 +43,4 @@ rust
 # Python
 python
 python-pip
+

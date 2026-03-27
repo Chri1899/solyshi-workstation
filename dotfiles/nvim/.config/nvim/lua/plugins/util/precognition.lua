@@ -2,7 +2,7 @@ return {
     "tris203/precognition.nvim",
     event = "BufReadPost",
     opts = {
-        startVisible = true,
+        startVisible = false,
         showBlankVirtLine = false,
         highlightColor = { link = "Comment" },
         hints = {
