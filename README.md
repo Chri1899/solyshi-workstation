@@ -213,8 +213,5 @@ Workflow: one tmux session per project, window 1 = Neovim, window 2 = build/run 
 - [ ] Keybind cheatsheet (floating Kitty window + glow + Markdown)
 - [ ] Lockscreen setup (hyprlock + hypridle)
 - [ ] Zsh cleanup pass
-- [ ] Offline documentation (Zeal + dasht)
-- [ ] cheat.sh integration (curl or Neovim plugin)
-- [ ] Replace rust_analyzer with rustaceanvim
 - [ ] Extend Waybar with more useful modules
 - [ ] Replace some UI packages with Quickshell eventually
