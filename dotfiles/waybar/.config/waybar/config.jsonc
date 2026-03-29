@@ -29,7 +29,7 @@
         "format": "{}",
         "tooltip-format": "curl -s 'wttr.in/?format='",
         "on-click": "xdg-open 'https://wttr.in'",
-        "tooltip": true,
+        "tooltip": true
     },
     "hyprland/workspaces": {
         "format": "{name}",

@@ -32,6 +32,7 @@ Managed with GNU Stow, structured for reproducibility and easy bootstrap on a fr
 | Shell         | Zsh + Powerlevel10k    |
 | Editor        | Neovim                 |
 | Launcher      | Rofi (wayland)         |
+| Display Manager | SDDM (Silent theme)    |
 | Notifications | Mako                   |
 | Browser       | Qutebrowser            |
 | File Manager  | Dolphin                |
@@ -61,6 +62,10 @@ solyshi-workstation/
 │   └── scripts/      # Utility scripts (tmux-sessionizer, etc.)
 ├── install/
 │   └── bootstrap.sh  # Interactive bootstrap script with dry-run support
+├── system/
+│   └── sddm/
+│       └── sddm.conf.d/
+│           └── theme.conf    # SDDM theme selection (symlinked to /etc/sddm.conf.d/)
 ├── packages/
 │   ├── 01-base.txt
 │   ├── 02-desktop.txt
@@ -208,10 +213,23 @@ Workflow: one tmux session per project, window 1 = Neovim, window 2 = build/run 
 
 ---
 
+### Display Manager
+
+SDDM with the [Silent theme](https://github.com/uiriansan/SilentSDDM) — a minimal, Qt6-native greeter.
+
+The theme config is stored in `system/sddm/sddm.conf.d/theme.conf` and symlinked to `/etc/sddm.conf.d/` during setup.
+
+> **Note:** After running the bootstrap script, activate SDDM manually if not already done:
+> ```bash
+> sudo systemctl enable --now sddm
+> ```
+
+---
+
 ## Roadmap
 
 - [ ] Keybind cheatsheet (floating Kitty window + glow + Markdown)
-- [ ] Lockscreen setup (hyprlock + hypridle)
+- [ ] Lockscreen (hyprlock + hypridle) — in-session screen lock
 - [ ] Zsh cleanup pass
 - [ ] Extend Waybar with more useful modules
 - [ ] Replace some UI packages with Quickshell eventually

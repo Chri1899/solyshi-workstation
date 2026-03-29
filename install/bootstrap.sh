@@ -109,6 +109,7 @@ install_base() {
 install_desktop() {
     section "02 — Desktop Environment"
     install_from_file "$PACKAGES_DIR/02-desktop.txt"
+    setup_sddm
     success "Desktop installed"
 }
 
@@ -271,6 +272,39 @@ setup_services() {
         systemctl --user enable mako 2>/dev/null || warn "Could not enable Mako"
     fi
     success "Services configured"
+}
+
+# =============================================================================
+# SDDM Display Manager
+# =============================================================================
+setup_sddm() {
+    section "Display Manager (SDDM)"
+
+    local conf_src="$REPO_DIR/system/sddm/sddm.conf.d/theme.conf"
+    local conf_dst="/etc/sddm.conf.d/theme.conf"
+
+    if [[ ! -f "$conf_src" ]]; then
+        warn "SDDM config not found at $conf_src — skipping"
+        return
+    fi
+
+    if $DRY_RUN; then
+        echo "  [DRY-RUN] sudo mkdir -p /etc/sddm.conf.d"
+        echo "  [DRY-RUN] sudo ln -sf $conf_src $conf_dst"
+        echo "  [DRY-RUN] sudo systemctl enable sddm"
+        return
+    fi
+
+    sudo mkdir -p /etc/sddm.conf.d
+
+    if [[ -e "$conf_dst" && ! -L "$conf_dst" ]]; then
+        warn "$conf_dst exists and is not a symlink — backing up to ${conf_dst}.bak"
+        sudo mv "$conf_dst" "${conf_dst}.bak"
+    fi
+
+    sudo ln -sf "$conf_src" "$conf_dst"
+    sudo systemctl enable sddm
+    success "SDDM configured and enabled"
 }
 
 # =============================================================================

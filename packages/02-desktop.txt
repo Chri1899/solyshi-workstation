@@ -3,6 +3,12 @@
 # Wayland, Hyprland, UI-Stack
 # ============================================================
 
+# Desktop Manager
+sddm
+qt6-svg 
+qt6-virtualkeyboard
+sddm-silent-theme
+
 # Wayland
 wayland
 wayland-protocols
