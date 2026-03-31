@@ -2,9 +2,13 @@
 
 if pgrep -x "wl-recorder" > /dev/null; then
     pkill --wait "wl-recorder"
-    filename=$(cat /tmp/wl-recorder-current 2>/dev/null)
-    rm -f /tmp/wl-recorder-current
-    notify-send "Screen Recording" "Recording saved to $filename"
+    filename=$(cat ${XDG_RUNTIME_DIR:-/tmp}/wl-recorder-current 2>/dev/null)
+    rm -f ${XDG_RUNTIME_DIR:-/tmp}/wl-recorder-current
+    if [ -n "$filename" ]; then
+        notify-send "Screen Recording" "Recording saved to $filename"
+    else
+        notify-send "Screen Recording" "Recording stopped (file path unknown)"
+    fi
 else
     choice=$(printf "Fullscreen\nRegion" | rofi -dmenu -p "Record")
 
@@ -16,7 +20,7 @@ else
 
     if [ "$choice" = "Fullscreen" ]; then
         filename="$HOME/Videos/Recordings/$(date +%Y%m%d_%H%M%S).mp4"
-        echo "$filename" > /tmp/wl-recorder-current
+        echo "$filename" > ${XDG_RUNTIME_DIR:-/tmp}/wl-recorder-current
         wl-recorder -f "$filename" &
         disown
         notify-send "Screen Recording" "Recording started (Fullscreen)"
@@ -26,12 +30,12 @@ else
             exit 0
         fi
         filename="$HOME/Videos/Recordings/$(date +%Y%m%d_%H%M%S).mp4"
-        echo "$filename" > /tmp/wl-recorder-current
+        echo "$filename" > ${XDG_RUNTIME_DIR:-/tmp}/wl-recorder-current
         wl-recorder -g "$geom" -f "$filename" &
         disown
         notify-send "Screen Recording" "Recording started (Region)"
     else
-        notify-send "Screen Recording" "Unknown mode" -u critical
+        notify-send -u critical "Screen Recording" "Unknown mode"
         exit 1
     fi
 fi
