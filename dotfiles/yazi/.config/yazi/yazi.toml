@@ -6,6 +6,7 @@ sort_reverse = false
 sort_dir_first = true      # Ordner immer oben
 show_hidden = true        # Hidden files standardmäßig aus (toggle mit .)
 show_symlink = true        # Symlink-Ziel anzeigen
+linemode = "git"
 
 [preview]
 max_width = 1000

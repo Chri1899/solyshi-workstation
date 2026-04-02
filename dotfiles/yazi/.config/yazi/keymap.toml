@@ -1,0 +1,5 @@
+[mgr]
+prepend_keymap = [
+    { on = "<C-g>", run = "plugin chmod", desc = "Chmod selected files" },
+    { on = "z", run = "plugin zoxide", desc = "Zoxide jump" },
+]
