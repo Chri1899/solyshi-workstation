@@ -3,3 +3,5 @@ dotfiles/qutebrowser/.config/qutebrowser/bookmarks/
 dotfiles/qutebrowser/.config/qutebrowser/quickmarks
 dotfiles/tmux/.config/tmux/plugins/
 dotfiles/theme/.config/theme/wallpaper
+dotfiles/yazi/.config/yazi/plugins/
+dotfiles/yazi/.config/yazi/flavors/matugen.yazi/flavor.toml
