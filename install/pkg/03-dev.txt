@@ -12,6 +12,7 @@ ninja
 pkg-config
 cmake
 clang
+patch
 
 # Editors
 vim
@@ -23,6 +24,7 @@ tree-sitter-cli
 ripgrep
 fd
 tmux
+tmuxinator
 zeal
 
 # Databases

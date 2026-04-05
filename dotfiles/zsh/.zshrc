@@ -37,6 +37,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   colored-man-pages
+  tmuxinator
 )
 
 source "$ZSH/oh-my-zsh.sh"
