@@ -19,9 +19,15 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c "$selected"
     exit 0
 fi
+
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c "$selected"
+    if tmuxinator list | grep -q "^$selected_name$"; then
+        tmuxinator start $selected_name --no-attach
+    else
+        tmux new-session -ds $selected_name -c "$selected"
+    fi
 fi
+
 if [[ -z $TMUX ]]; then
     tmux attach-session -t $selected_name
 else
